@@ -1,6 +1,8 @@
+
+
 <form>
   <mat-form-field class="full-width">
-    <input type="text" placeholder="Select Font" matInput [formControl]="fontAutoComplete" [matAutocomplete]="auto">
+    <input type="text" placeholder="Select Font" matInput [formControl]="fontAutoComplete" [matAutocomplete]="auto" [style.font-family]="options.fontfamily">
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="fontSelected($event)">
       <mat-option *ngFor="let font of fonts" [value]="font.family">
         <span [style.font-family]="font.family">{{font.family}}</span>

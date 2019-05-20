@@ -1,2 +1,3 @@
-<app-font-list [font-list]="fontList$ | async" (font-selected)="updateSelectedFont($event)">
+<app-font-list [font-list]="fontList$ | async" [options-state]="optionsState$ | async"
+    (font-selected)="updateSelectedFont($event)">
 </app-font-list>

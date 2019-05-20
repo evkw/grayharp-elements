@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { GoogleFont } from '@example-models/font-picker.model';
 import { FontPickerService } from '../../service/font-picker.service';
 import { tap } from 'rxjs/operators';
+import { AppStateService } from '@example-core/services';
+import { OptionsState } from '@example-models/app-state.model';
 
 @Component({
   selector: 'app-font-picker-layout',
@@ -11,12 +13,14 @@ import { tap } from 'rxjs/operators';
 })
 export class FontPickerLayoutComponent implements OnInit {
   fontList$: Observable<GoogleFont[]>;
+  optionsState$: Observable<OptionsState>;
   selectedFont: GoogleFont;
-  constructor(private fontPickerSvc: FontPickerService) { }
+  constructor(private fontPickerSvc: FontPickerService, private appState: AppStateService) { }
 
   @Output('font-selected') fontSelected = new EventEmitter<GoogleFont>();
 
   ngOnInit() {
+    this.optionsState$ = this.appState.getOptionsState();
     this.fontList$ = this.fontPickerSvc.getFonts().pipe(
       tap(fonts => {
         const id = 'font-families';
@@ -61,6 +65,7 @@ export class FontPickerLayoutComponent implements OnInit {
 
     node.innerHTML = styles;
     document.body.appendChild(node);
+    this.appState.setOptionsState({fontfamily: font.family});
   }
 
 }

@@ -9,6 +9,7 @@ import { HotkeyModule } from 'angular2-hotkeys';
 import { ExampleHotKeyService } from './core/services/hot-key/hot-key.service';
 import { ProxyRouteComponent } from './core/components/proxy-route/proxy-route.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppStateService } from '@example-core/services';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     DexieService,
     AppStorageService,
-    ExampleHotKeyService
+    ExampleHotKeyService,
+    AppStateService
   ],
   bootstrap: [AppComponent]
 })
