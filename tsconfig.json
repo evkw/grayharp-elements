@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "grayharp-elements": [
+        "dist/grayharp-elements"
+      ],
+      "grayharp-elements/*": [
+        "dist/grayharp-elements/*"
+      ]
+    }
   }
 }

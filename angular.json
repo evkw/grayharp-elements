@@ -2,5 +2,153 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "grayharp-elements": {
+      "projectType": "library",
+      "root": "projects/grayharp-elements",
+      "sourceRoot": "projects/grayharp-elements/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/grayharp-elements/tsconfig.lib.json",
+            "project": "projects/grayharp-elements/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/grayharp-elements/src/test.ts",
+            "tsConfig": "projects/grayharp-elements/tsconfig.spec.json",
+            "karmaConfig": "projects/grayharp-elements/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/grayharp-elements/tsconfig.lib.json",
+              "projects/grayharp-elements/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "grayharp-examples": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/grayharp-examples",
+      "sourceRoot": "projects/grayharp-examples/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/grayharp-examples",
+            "index": "projects/grayharp-examples/src/index.html",
+            "main": "projects/grayharp-examples/src/main.ts",
+            "polyfills": "projects/grayharp-examples/src/polyfills.ts",
+            "tsConfig": "projects/grayharp-examples/tsconfig.app.json",
+            "assets": [
+              "projects/grayharp-examples/src/favicon.ico",
+              "projects/grayharp-examples/src/assets"
+            ],
+            "styles": [
+              "projects/grayharp-examples/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/grayharp-examples/src/environments/environment.ts",
+                  "with": "projects/grayharp-examples/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "grayharp-examples:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "grayharp-examples:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "grayharp-examples:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/grayharp-examples/src/test.ts",
+            "polyfills": "projects/grayharp-examples/src/polyfills.ts",
+            "tsConfig": "projects/grayharp-examples/tsconfig.spec.json",
+            "karmaConfig": "projects/grayharp-examples/karma.conf.js",
+            "assets": [
+              "projects/grayharp-examples/src/favicon.ico",
+              "projects/grayharp-examples/src/assets"
+            ],
+            "styles": [
+              "projects/grayharp-examples/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/grayharp-examples/tsconfig.app.json",
+              "projects/grayharp-examples/tsconfig.spec.json",
+              "projects/grayharp-examples/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/grayharp-examples/e2e/protractor.conf.js",
+            "devServerTarget": "grayharp-examples:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "grayharp-examples:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "grayharp-elements"
 }
