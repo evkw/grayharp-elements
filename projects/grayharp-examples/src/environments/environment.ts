@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apis: {
+    googlefonts: `https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCxGo6SgLBuB43a_XYNpFYYZZz2Bz_NItg`
+  }
 };
 
 /*

@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/grayharp-elements",
       "sourceRoot": "projects/grayharp-elements/src",
-      "prefix": "lib",
+      "prefix": "ghe",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

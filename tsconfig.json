@@ -19,12 +19,11 @@
       "dom"
     ],
     "paths": {
-      "grayharp-elements": [
-        "dist/grayharp-elements"
-      ],
-      "grayharp-elements/*": [
-        "dist/grayharp-elements/*"
-      ]
+      "grayharp-elements": ["dist/grayharp-elements"],
+      "grayharp-elements/*": ["dist/grayharp-elements/*"],
+      "@example-models/*": ["projects/grayharp-examples/src/app/models/*"],
+      "@example-env/*": ["projects/grayharp-examples/src/environments/*"],
+      "@example-core/*": ["projects/grayharp-examples/src/app/core/*"],
     }
   }
 }

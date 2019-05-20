@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ExampleHotKeyService } from './core/services/hot-key/hot-key.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'grayharp-examples';
+
+  constructor(private hotkeySvc: ExampleHotKeyService) {
+    hotkeySvc.setupOptionsKey();
+  }
 }
