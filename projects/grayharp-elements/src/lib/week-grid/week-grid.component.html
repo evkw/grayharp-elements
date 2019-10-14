@@ -1,0 +1,52 @@
+<div class="week-hour-container">
+  <div class="dotted-line hour-cells-padding"></div>
+  <div
+    class="hour-row"
+    *ngFor="let cell of getCells() | slice: 0:24; let i = index"
+  >
+    <span>{{ cell.twelveHour }} {{ cell.period }}</span>
+    <div class="dotted-line-increment"></div>
+  </div>
+</div>
+
+<div
+  class="week-calendar-container"
+  libCellSelection
+  [ngClass]="{ fullWeek: true }"
+  (selectionChange)="cellSelectionUpdate($event)"
+>
+  <div
+    class="cell"
+    *ngFor="let cell of getCells()"
+    libHourCell
+    [cellNumber]="cell.cellId"
+    [ngStyle]="!!cell.selected ? { 'background-color': 'aliceblue' } : {}"
+    [attr.cell-number]="cell.cellId"
+    [attr.cell-hour]="cell.hour"
+  ></div>
+</div>
+
+<div class="content-cell-container">
+  <div
+    *ngFor="let appt of getAppointments()"
+    class="event-wrapper"
+    libEventCell
+    [data]="appt"
+    cdkDrag
+    [cdkDragData]="appt"
+    cdkDragLockAxis="y"
+    (cdkDragEnded)="onAppointmentDragEnded($event)"
+  >
+    <div
+      class="event-week"
+      [ngClass]="{
+        'event-load-animation': firstTimeLoad,
+        'event-purple': appt.rowStart % 3 === 0,
+        'event-red': appt.rowStart % 3 === 1,
+        'event-blue': appt.rowStart % 3 === 2
+      }"
+    >
+      <span class="event-name">{{ appt.eventName }}</span>
+    </div>
+  </div>
+</div>

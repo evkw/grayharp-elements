@@ -1,0 +1,53 @@
+<div class="calendar-header">
+  <div class="heading-date">
+    <span class="day-date">{{ targetDate?.monthName }}</span>
+    <span class="year">{{ targetDate?.year }}</span>
+  </div>
+  <div class="controls">
+    <div class="prev-next">
+      <button class="arrow-button left-arrow " (click)="changeDate.emit(-1)">
+        <i class="material-icons md-18">
+          keyboard_arrow_left
+        </i>
+      </button>
+      <button class="arrow-button right-arrow " (click)="changeDate.emit(1)">
+        <i class="material-icons md-18">
+          keyboard_arrow_right
+        </i>
+      </button>
+    </div>
+
+    <div class="mode-select">
+      <button
+        class="mode"
+        [ngClass]="{ 'mode-selected': mode === 'day' }"
+        (click)="setMode('day')"
+      >
+        Day
+      </button>
+      <div class="vert-divide"></div>
+      <button
+        class="mode"
+        [ngClass]="{ 'mode-selected': mode === 'week' }"
+        (click)="setMode('week')"
+      >
+        Week
+      </button>
+      <div class="vert-divide"></div>
+      <button
+        class="mode"
+        [ngClass]="{ 'mode-selected': mode === 'month' }"
+        (click)="setMode('month')"
+      >
+        Month
+      </button>
+    </div>
+
+    <div class="add-event" (click)="addEvent($event)">
+      <i class="material-icons md-18">
+        add
+      </i>
+      <span>Add Event</span>
+    </div>
+  </div>
+</div>

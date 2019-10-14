@@ -1,0 +1,36 @@
+<div
+  class="week-calendar-container"
+  libCellSelection
+  (selectionChange)="cellSelectionUpdate($event)"
+>
+  <div
+    class="cell"
+    *ngFor="let cell of getCells()"
+    libHourCell
+    [ngStyle]="!!cell?.selected ? { 'background-color': 'aliceblue' } : {}"
+    [attr.cell-number]="cell?.cellId"
+  >
+    {{ cell?.day }}
+  </div>
+</div>
+
+<div class="content-cell-container">
+  <div
+    *ngFor="let appt of getAppointments()"
+    class="event-wrapper"
+    libEventCell
+    [mode]="'month'"
+    [data]="appt"
+    cdkDrag
+    [cdkDragData]="appt"
+    cdkDragLockAxis="y"
+    (cdkDragEnded)="onAppointmentDragEnded($event)"
+  >
+    <div
+      class="event-month"
+      [ngClass]="{ 'event-load-animation': firstTimeLoad }"
+    >
+      <span class="event-name truncate">{{ appt.eventName }}</span>
+    </div>
+  </div>
+</div>

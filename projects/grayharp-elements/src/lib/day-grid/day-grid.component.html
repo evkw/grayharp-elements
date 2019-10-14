@@ -1,0 +1,54 @@
+<div class="day-hour-container">
+  <div class="dotted-line hour-cells-padding"></div>
+  <div
+    class="hour-row"
+    *ngFor="let cell of getCells() | slice: 0:24; let i = index"
+  >
+    <span>{{ cell.twelveHour }} {{ cell.period }}</span>
+    <div class="dotted-line-increment"></div>
+  </div>
+</div>
+
+<div
+  class="day-row-container"
+  libCellSelection
+  (selectionChange)="cellSelectionUpdate($event)"
+>
+  <div class="day-row" *ngFor="let cell of getCells(); let i = index">
+    <div
+      class="row"
+      libHourCell
+      [cellNumber]="cell.cellId"
+      [ngStyle]="!!cell.selected ? { 'background-color': 'aliceblue' } : {}"
+      [attr.cell-number]="cell.cellId"
+      [attr.cell-hour]="cell.hour"
+    ></div>
+  </div>
+</div>
+
+<div class="content-row-container">
+  <div
+    *ngFor="let appt of getAppointments()"
+    class="event-wrapper"
+    libEventCell
+    mode="day"
+    [data]="appt"
+    [cdkDragData]="appt"
+    cdkDrag
+    cdkDragLockAxis="y"
+    (cdkDragEnded)="onAppointmentDragEnded($event)"
+  >
+  <!-- Event colour temporarily determined by rowStart, should be derived from id or some other prop -->
+    <div
+      class="event-day"
+      [ngClass]="{
+        'event-load-animation': firstTimeLoad,
+        'event-purple': appt.rowStart % 3 === 0,
+        'event-red': appt.rowStart % 3 === 1,
+        'event-blue': appt.rowStart % 3 === 2
+      }"
+    >
+      <span class="event-name">{{ appt.eventName }}</span>
+    </div>
+  </div>
+</div>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GrayharpElementsComponent } from './grayharp-elements.component';
+import { WeeklyPageComponent } from './weekly-page.component';
 
-describe('GrayharpElementsComponent', () => {
-  let component: GrayharpElementsComponent;
-  let fixture: ComponentFixture<GrayharpElementsComponent>;
+describe('WeeklyPageComponent', () => {
+  let component: WeeklyPageComponent;
+  let fixture: ComponentFixture<WeeklyPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GrayharpElementsComponent ]
+      declarations: [ WeeklyPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GrayharpElementsComponent);
+    fixture = TestBed.createComponent(WeeklyPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

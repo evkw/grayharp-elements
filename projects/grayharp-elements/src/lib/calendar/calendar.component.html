@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <tapp-calendar-header
+    [mode]="mode"
+    [targetDate]="getTargetDate()"
+    (changeMode)="setMode($event)"
+    (changeDate)="changeTargetDate($event)"
+    (addEventClicked)="addEventToSelected($event)"
+  ></tapp-calendar-header>
+
+  <ng-container [ngSwitch]="mode">
+    <ng-container *ngSwitchCase="'day'">
+      <div class="week-heading">
+        <div class="week-day">
+            {{ getAbbDay() }} {{ getTargetDate()?.day }}
+        </div>
+      </div>
+      <tapp-day-grid
+        class="calendar-container calendar-container-rows"
+        [targetDate]="getTargetDate()"
+        [appointments]="appointments"
+        [addAppointmentToSelected]="onNewAppointmentClick$ | async"
+        (newAppointment)="onNewAppointment($event)"
+        (changeAppointment)="onChangeAppointment($event)"
+        (deleteAppointment)="onDeleteAppointment($event)"
+      ></tapp-day-grid>
+    </ng-container>
+    <ng-container *ngSwitchCase="'week'">
+      <div
+        class="week-heading"
+        [ngClass]="{ fullWeek: true }"
+      >
+        <span class="week-day" *ngFor="let day of week; let i = index"
+          >{{ getAbbDay(day?.dayName) | uppercase }} {{ day.date }}</span
+        >
+      </div>
+      <tapp-week-grid
+        class="calendar-container"
+        [targetDate]="getTargetDate()"
+        [appointments]="appointments"
+        [addAppointmentToSelected]="onNewAppointmentClick$ | async"
+        (newAppointment)="onNewAppointment($event)"
+        (changeAppointment)="onChangeAppointment($event)"
+        (deleteAppointment)="onDeleteAppointment($event)"
+      ></tapp-week-grid>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'month'">
+      <div class="week-heading-month fullWeek">
+        <span class="week-day-month" *ngFor="let day of week; let i = index"
+          >{{ getAbbDay(day.dayName) | uppercase }}</span
+        >
+      </div>
+      <tapp-month-grid
+        class="calendar-container"
+        [targetDate]="getTargetDate()"
+        [appointments]="appointments"
+      ></tapp-month-grid>
+    </ng-container>
+  </ng-container>
+</div>

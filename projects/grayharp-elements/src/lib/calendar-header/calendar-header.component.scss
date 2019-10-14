@@ -1,0 +1,187 @@
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 70px;
+  color: #525961;
+
+  .heading-date {
+    display: flex;
+    align-items: baseline;
+    .day-date {
+      font-size: 2.3em;
+      font-weight: 700;
+    }
+
+    .year {
+      font-size: 2.3em;
+      font-weight: 300;
+    }
+  }
+
+  span {
+    margin-right: 20px;
+  }
+}
+
+.controls {
+  display: flex;
+  width: 550px;
+  justify-content: space-between;
+  font-weight: 500;
+
+  .mode-select {
+    height: 35;
+    width: 280px;
+    border: 1px solid #3847cc;
+    border-radius: 0.2em;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 0.8em;
+
+    .mode,
+    .mode-selected {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      border: none;
+    }
+
+    .mode {
+      color: #3847cc;
+      background: transparent;
+    }
+
+    .mode-selected {
+      color: white;
+      background-color: #3847cc;
+    }
+
+    .vert-divide {
+      width: 3px;
+      background-color: #3847cc;
+    }
+  }
+
+  .prev-next {
+    display: flex;
+    width: 80px;
+    justify-content: space-between;
+
+    .arrow-button {
+      height: 35px;
+      width: 35px;
+      background-color: #3847cc;
+      border: none;
+      border-radius: 2em;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .left-arrow {
+      padding-right: 2px;
+    }
+
+    // .right-arrow {
+    //   padding-left: 2px;
+    // }
+
+    .arrow-button:hover {
+      background-color: rgb(88, 103, 240);
+    }
+  }
+
+  .add-event {
+    height: 35px;
+    padding-right: 5px;
+    width: 102px;
+    align-items: center;
+    border: 1px solid #3847cc;
+    border-radius: 0.2em;
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.8em;
+    color: #3847cc;
+    padding-right: 10px;
+    cursor: pointer;
+
+    span {
+      margin: 0;
+    }
+  }
+
+  .calendar-nav {
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-sizing: border-box;
+    box-sizing: border-box;
+    width: 35px;
+    height: 35px;
+    margin: 0 0.1em 0.1em 0;
+    padding: 0.3em;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    border: 1px solid rgb(184, 184, 184);
+    border-radius: 2em;
+    background-color: transparent;
+    button {
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      background-color: transparent;
+    }
+
+    .right-arrow,
+    .left-arrow {
+      height: 3px;
+      padding: 3px;
+      border: solid rgb(184, 184, 184);
+      border-width: 0 2px 2px 0;
+    }
+
+    .right-arrow {
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+
+    .left-arrow {
+      -webkit-transform: rotate(135deg);
+      transform: rotate(135deg);
+    }
+  }
+
+  .add-event-btn {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    color: white;
+    border: none;
+    border-radius: 2em;
+    background-color: rgb(69, 114, 212);
+    cursor: pointer;
+  }
+
+  .add-event-btn:before {
+    content: '\002B';
+  }
+
+  .add-event {
+    cursor: pointer;
+  }
+
+  .add-event:hover {
+    .add-event-btn {
+      background-color: rgb(90, 135, 233);
+    }
+  }
+}

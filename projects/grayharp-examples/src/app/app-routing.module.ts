@@ -18,7 +18,11 @@ const auxRoutes = [
 ];
 
 const routes = [
-    ...auxRoutes
+    ...auxRoutes,
+    {
+      path: 'schedules',
+      loadChildren: './features/+schedules/schedules-routing.module#SchedulesRoutingModule'
+    }
 ];
 
 @NgModule({

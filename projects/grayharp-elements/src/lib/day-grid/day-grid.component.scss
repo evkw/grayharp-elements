@@ -1,0 +1,205 @@
+$hour-size: 80px; // Need to import this some how?
+$day-row-size: 70px;
+
+.day-row-container {
+  width: 100%;
+  color: #828991;
+  border-top: 1px solid #d3d3d3;
+  display: grid;
+  grid-gap: 1px;
+  grid-template-rows: repeat(24, 70px);
+
+  .day-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    // height: $day-row-size;
+  }
+
+  .row {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+  }
+
+  .row:hover {
+    background-color: rgb(250, 251, 253);
+  }
+}
+
+.day-hour-container {
+  // padding-top: 34px; // 35 without dotted-line div above hour cells
+  display: grid;
+  color: #828991;
+  grid-gap: 1px;
+  .hour-row {
+    justify-content: space-between;
+    font-weight: 500;
+    color: #c3c3c3;
+    font-size: 0.9em;
+    // font-weight: 300;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: $hour-size - 10px;
+    padding-left: 10px;
+    height: $day-row-size; // This needs to be aligned with the other table/grid layer
+  }
+}
+
+// .hour-row-container {
+//   .hour {
+//     font-weight: 300;
+//     width: $hour-size;
+//   }
+// }
+
+.content-row-container {
+  grid-gap: 1px 1px;
+}
+
+.content-row-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+
+.content-row-container {
+  width: 100%;
+  height: 0;
+  position: absolute;
+  pointer-events: none;
+  display: grid;
+  grid-template-rows: repeat(24, $day-row-size);
+  top: 0;
+  padding-left: 80px;
+
+  .event-day {
+    // background-color: #ddd4f8;
+    box-sizing: border-box;
+    pointer-events: auto;
+    // width: 100%;
+    // height: 100%;
+
+    // position: absolute;
+    // width: 100%;
+    // width: calc(100% - 76px);
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .event-purple {
+    border-left: 4px solid #8465eb;
+    color: #8465eb;
+    background-color: #ddd4f8;
+  }
+
+  .event-red {
+    border-left: 4px solid #ec5b5b;
+    color: #ec5b5b;
+    background-color: #f8d4d4;
+  }
+
+  .event-blue {
+    border-left: 4px solid #46dfe6;
+    color: #46dfe6;
+    background-color: #d3f3ff;
+  }
+
+  // display: grid;
+  // grid-template-rows: repeat(24, $day-row-size);
+  // .content-row {
+  //   position: absolute;
+  //   box-sizing: border-box;
+  //   width: calc(100% - 76px);
+  //   margin-left: 76px;
+  //   padding: 20px;
+  //   color: white;
+  //   border: 1px solid;
+  //   border: 1px solid purple;
+  //   background-color: plum;
+  // }
+}
+
+// .event-day {
+//   background-color: #ddd4f8;
+//   border-left: 4px solid #8465eb;
+//   color: #8465eb;
+//   position: absolute;
+//   width: 100%;
+//   height: calc(100% - 20px);
+//   box-sizing: border-box;
+// }
+
+// Could be global
+
+.hour-cells-padding {
+  padding-bottom: 33px; // Check this
+}
+
+.event-wrapper {
+  padding: 10px;
+  // top: 350px;
+  // height: 140px;
+  // position: absolute;
+  box-sizing: border-box;
+  // width: calc(100% - 95px);
+  pointer-events: auto;
+  // margin-left: 76px;
+}
+
+.event-day,
+.event-week,
+.event-month {
+  padding: 10px;
+  border-radius: 0.3em;
+  font-size: 10pt;
+
+  .event-name {
+    font-weight: 500;
+  }
+
+  p {
+    font-weight: 300;
+  }
+}
+
+.event-load-animation {
+  animation: 0.5s ease-out 0s 1 eventLoad;
+}
+
+@keyframes eventLoad {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.dotted-line,
+.dotted-line-increment {
+  // border-top: 1px dashed lightgray;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    lightgray 70%,
+    rgba(255, 255, 255, 0) 0%
+  );
+  background-size: 7px 1px;
+  background-repeat: repeat-x;
+}
+
+.dotted-line {
+  width: 100%;
+}
+
+.dotted-line-increment {
+  width: 13px;
+}
